@@ -8,9 +8,17 @@ module.exports= (sequelize,datatypes)=> {
         },
         password: {
             type:datatypes.STRING,
-            allowNull:false
+            allowNull:false,
+            unique:false,
+            
+        },
+        username:{
+            type:datatypes.STRING,
+            allowNull:false,
+            unique:true,
 
-        }
+        },
+
     })
 
     return users;

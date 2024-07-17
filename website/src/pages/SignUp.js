@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import "../styles/Login.css"
+import "../styles/SignUp.css"
 
-function Login() {
+function SignUp() {
 
      async function onSignUp(e)  {
     
@@ -24,14 +24,14 @@ function Login() {
   
 
     return (
-       <form className="Login" onSubmit={onSignUp}>
+       <form className="signup" onSubmit={onSignUp}>
             <h1> FINSTAGRAM </h1>
              <input type="email" placeholder= "email"/>
              <input type="password" placeholder="password" />
              <input type="text" placeholder="username"/>
-            <button type="submit"> LOGIN </button>
+            <button type="submit"> SIGN UP </button>
         </form>
     )
 }
 
-export default Login
+export default SignUp
