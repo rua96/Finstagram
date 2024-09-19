@@ -1,22 +1,60 @@
-.signup{
+.signup {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100%;
-    gap: 30px;
-    
+    height: 100vh; /* Altezza del 100% della viewport */
+    gap: 20px; /* Ridotto leggermente per migliorare l'aspetto */
+    padding: 20px; /* Aggiunto padding per migliorare la visualizzazione su schermi piccoli */
+    box-sizing: border-box; /* Include il padding nella dimensione totale dell'elemento */
 }
-h1{
-    color:aliceblue;
+
+h1 {
+    color: aliceblue;
+    margin-bottom: 20px; /* Aggiunto margine inferiore per distanziare il titolo dagli input */
 }
+
 body {
     background-color: rgba(17, 104, 210, 0.823);
-    
+    margin: 0; /* Rimuove il margine di default del body */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Altezza del 100% della viewport */
 }
-button{
-    padding: 10px ;
-    margin:10px;
-    color:white;
-    background-color:rgba(0, 128, 47, 0.688) ;
+
+input {
+    padding: 10px;
+    margin: 5px;
+    width: 80%; /* Rende gli input responsivi */
+    max-width: 300px; /* Limita la larghezza massima degli input */
+    border: 1px solid #ccc; /* Aggiunge un bordo agli input */
+    border-radius: 5px; /* Aggiunge angoli arrotondati agli input */
+    box-sizing: border-box; /* Include il padding nella dimensione totale dell'input */
+}
+
+button {
+    padding: 10px 20px; /* Aggiunto padding orizzontale per migliorare l'aspetto */
+    margin: 10px;
+    color: white;
+    background-color: rgba(0, 128, 47, 0.688);
+    border: none; /* Rimuove il bordo di default del pulsante */
+    border-radius: 5px; /* Aggiunge angoli arrotondati al pulsante */
+    cursor: pointer; /* Cambia il cursore quando si passa sopra il pulsante */
+}
+
+button:hover {
+    background-color: rgba(0, 128, 47, 0.8); /* Colore di sfondo leggermente più scuro al passaggio del mouse */
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+    margin: 10px 0;
 }
