@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import "../styles/SignUp.css"
+import "../../styles/SignUp.css"
 
-function SignUp() {
+function SignUp(props) {
 
      async function onSignUp(e)  {
     
@@ -15,8 +15,8 @@ function SignUp() {
 
       {
         email:e.target[0].value,
-        password: e.target[1].value,
-        username: e.target[2].value,
+        username: e.target[1].value,
+        password: e.target[2].value,
       }   
     )
      console.log(response.data);
@@ -25,11 +25,15 @@ function SignUp() {
 
     return (
        <form className="signup" onSubmit={onSignUp}>
-            <h1> FINSTAGRAM </h1>
-             <input type="email" placeholder= "email"/>
-             <input type="password" placeholder="password" />
-             <input type="text" placeholder="username"/>
+            <h1> FINSTAGRAM  </h1>
+            <h2> SIGN-UP </h2>
+             <input type="email" placeholder= "Email"/>
+             <input type="text" placeholder="Username"/>
+             <input type="password" placeholder="Password" />
             <button type="submit"> SIGN UP </button>
+            <button type="button"
+            onClick={() => props.changeToLogin()}
+            >Log In</button>
         </form>
     )
 }
