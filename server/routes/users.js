@@ -2,8 +2,11 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const { users } = require("../models")
 const Validation = require("../helpers/Validation");
+const {sign} = require("jsonwebtoken");
+require('dotenv').config()
 
 const router=express.Router()
+const {validateToken} =require("../middlewares/Authentication")
 
 router.get('/', async(req,res)=>{
     return res.send(false);
@@ -77,12 +80,33 @@ bcrypt.compare(password,user.password).then(async(match) =>{
     if(!match) {
         return res.json({error: "wrong Password"})
     }
+    
+    const authToken = sign(
+        {
+            email: user.email,
+            username: user.username,
+            status: true,
+        },
+        process.env.AUTH_SECRET)
+    return res.json({
+        authToken:authToken,
+        email: user.email,
+        username:user.username,
+        status: true
+    });
 
-    return res.json({login:true});
     })
 
 })
 
+
+router.get("/auth", validateToken ,async (req,res) => {
+
+    if(req.user) {
+        return res.json({ user: req.user});
+    }
+
+})
 
 module.exports = router;
 
