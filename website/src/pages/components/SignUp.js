@@ -24,9 +24,12 @@ function SignUp(props) {
   
 
     return (
-       <form className="signup" onSubmit={onSignUp}>
-            <h1> FINSTAGRAM  </h1>
+
+      <div>
+        <h1> FINSTAGRAM  </h1>
             <h2> SIGN-UP </h2>
+       <form className="signup" onSubmit={onSignUp}>
+            
              <input type="email" placeholder= "Email"/>
              <input type="text" placeholder="Username"/>
              <input type="password" placeholder="Password" />
@@ -35,6 +38,7 @@ function SignUp(props) {
             onClick={() => props.changeToLogin()}
             >Log In</button>
         </form>
+        </div>
     )
 }
 

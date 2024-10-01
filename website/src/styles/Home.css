@@ -1,6 +1,11 @@
 body {
   text-align: center;
   background-color: #B2EBF2; /* Celestino chiaro */
+  margin: 0; /* Rimuove il margine di default del body */
+  display: flex; /* Rende il body flessibile */
+  justify-content: center; /* Centra il contenuto orizzontalmente */
+  align-items: center; /* Centra il contenuto verticalmente */
+  height: 100vh; /* Altezza del 100% della viewport */
 }
 
 h1 {
@@ -14,6 +19,22 @@ h2 {
   font-size: 30px;
   margin-bottom: 20px;
 }
+
+.logout-button {
+  margin-top: 30px; /* Aggiunge spazio sopra il bottone */
+  padding: 10px 20px; /* Padding per il bottone */
+  color: white;
+  background-color: #7E57C2; /* Viola medio */
+  border: none; /* Rimuove il bordo di default del pulsante */
+  border-radius: 5px; /* Angoli arrotondati al pulsante */
+  cursor: pointer; /* Cambia il cursore quando si passa sopra il pulsante */
+  transition: background-color 0.3s ease; /* Transizione al passaggio del mouse */
+}
+
+.logout-button:hover {
+  background-color: #5E35B1; /* Viola scuro al passaggio del mouse */
+}
+
 
 button {
   font-size: 18px;
@@ -29,3 +50,41 @@ button {
 button:hover {
   background-color: #5E35B1; /* Viola scuro al passaggio del mouse */
 }
+
+.home-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px; /* Spazio tra gli elementi */
+  padding: 20px; /* Padding per il form */
+  box-sizing: border-box; /* Include il padding nella dimensione totale dell'elemento */
+  width: 100%; /* Occupa tutta la larghezza disponibile */
+  max-width: 400px; /* Larghezza massima per il form */
+  border: 2px solid #5C6BC0; /* Bordo blu lavanda */
+  border-radius: 10px; /* Angoli arrotondati */
+  background-color: #727272;
+}
+
+.home-form input {
+  padding: 10px;
+  margin: 5px;
+  width: 100%; /* Occupa la larghezza completa del modulo */
+  border: 1px solid #ccc; /* Aggiunge un bordo agli input */
+  border-radius: 5px; /* Aggiunge angoli arrotondati agli input */
+  box-sizing: border-box; /* Include il padding nella dimensione totale dell'input */
+}
+
+.home-form button {
+  padding: 10px 20px; /* Padding orizzontale per migliorare l'aspetto */
+  margin: 10px;
+  color: white;
+  background-color: #7E57C2; /* Viola medio */
+  border: none; /* Rimuove il bordo di default del pulsante */
+  border-radius: 5px; /* Angoli arrotondati al pulsante */
+}
+
+.home-form button:hover {
+  background-color: #5E35B1; /* Viola scuro al passaggio del mouse */
+}
+

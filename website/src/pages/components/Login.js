@@ -45,12 +45,12 @@ function Login(props) {
         localStorage.setItem("AuthToken",response?.data?.authToken)
         }
       }
-      
-    return (
-       <form className="Login" onSubmit={onLogin}>
-            <h1> FINSTAGRAM 
-            </h1>
-            <h2> LOGIN </h2>
+      return (            
+    <div>    <h1> FINSTAGRAM </h1>
+     <h2> LOGIN </h2>
+        <form className="Login" onSubmit={onLogin}>
+
+           
              <input type="text" placeholder="Email o Username"/>
              <input type="password" placeholder="Password" />
             <button type="submit"> LOGIN </button>
@@ -58,7 +58,8 @@ function Login(props) {
             onClick={() => props.changeToSignUp()}
             >SignUp</button>
         </form>
-    )
+  </div> 
+   )
 }
 
 export default Login

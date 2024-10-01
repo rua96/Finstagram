@@ -1,24 +1,3 @@
-.signup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh; /* Altezza del 100% della viewport */
-    gap: 20px; /* Ridotto leggermente per migliorare l'aspetto */
-    padding: 20px; /* Aggiunto padding per migliorare la visualizzazione su schermi piccoli */
-    box-sizing: border-box; /* Include il padding nella dimensione totale dell'elemento */
-}
-
-h1 {
-    color: #0c169c; ; /* Blu scuro */
-    margin-bottom: 20px; /* Aggiunto margine inferiore per distanziare il titolo dagli input */
-}
-
-h2 {
-    color: #5C6BC0; /* Blu lavanda */
-    margin-bottom: 20px; /* Aggiunto margine inferiore per distanziare il titolo dagli input */
-}
-
 body {
     background-color: #B2EBF2; /* Celestino chiaro */
     margin: 0; /* Rimuove il margine di default del body */
@@ -28,28 +7,53 @@ body {
     height: 100vh; /* Altezza del 100% della viewport */
 }
 
-input {
+.signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px; /* Spazio tra gli elementi */
+    padding: 20px; /* Padding per il form */
+    box-sizing: border-box; /* Include il padding nella dimensione totale dell'elemento */
+    width: 100%; /* Occupa tutta la larghezza disponibile */
+    max-width: 400px; /* Larghezza massima per il form */
+    border: 2px solid #5C6BC0; /* Bordo blu lavanda */
+    border-radius: 10px; /* Angoli arrotondati */
+    background-color: white; /* Sfondo bianco per contrasto */
+}
+
+.signup h1 {
+    color: #0c169c; /* Blu scuro */
+    margin-bottom: 20px; /* Spazio sotto il titolo */
+}
+
+.signup h2 {
+    color: #5C6BC0; /* Blu lavanda */
+    margin-bottom: 20px; /* Spazio sotto il sottotitolo */
+}
+
+.signup input {
     padding: 10px;
     margin: 5px;
-    width: 80%; /* Rende gli input responsivi */
-    max-width: 300px; /* Limita la larghezza massima degli input */
+    width: 100%; /* Occupa la larghezza completa del modulo */
     border: 1px solid #ccc; /* Aggiunge un bordo agli input */
     border-radius: 5px; /* Aggiunge angoli arrotondati agli input */
     box-sizing: border-box; /* Include il padding nella dimensione totale dell'input */
-    display: flex;
+    font-size: 18px; /* Dimensione del font uniforme */
 }
 
-button {
-    padding: 10px 20px; /* Aggiunto padding orizzontale per migliorare l'aspetto */
+.signup button {
+    padding: 10px 20px; /* Padding orizzontale per migliorare l'aspetto */
     margin: 10px;
     color: white;
     background-color: #7E57C2; /* Viola medio */
     border: none; /* Rimuove il bordo di default del pulsante */
-    border-radius: 5px; /* Aggiunge angoli arrotondati al pulsante */
+    border-radius: 5px; /* Angoli arrotondati al pulsante */
     cursor: pointer; /* Cambia il cursore quando si passa sopra il pulsante */
+    font-size: 18px; /* Dimensione del font uniforme */
 }
 
-button:hover {
+.signup button:hover {
     background-color: #5E35B1; /* Viola scuro al passaggio del mouse */
 }
 

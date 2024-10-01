@@ -1,0 +1,67 @@
+body {
+    text-align: center;
+    background-color: #B2EBF2; /* Celestino chiaro */
+}
+
+.create-post-form {
+    display: flex; /* Aggiungi display flex */
+    flex-direction: column; /* Dispone gli elementi in colonna */
+    align-items: center; /* Centra gli elementi orizzontalmente */
+    border: 2px solid #5C6BC0; /* Bordo blu lavanda */
+    padding: 20px; /* Padding aggiunto */
+    border-radius: 10px; /* Angoli arrotondati */
+    background-color:#bde6c3;
+}
+
+.create-post-form h1 {
+    color: #0c169c; /* blu scuro */
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.create-post-form h2 {
+    color: #5C6BC0; /* Blu lavanda */
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.create-post-form h3 {
+    color: #c05c89; /* Blu lavanda rosa */
+    font-size: 30px;
+    align-self: flex-start; /* Allinea il titolo a sinistra per coerenza */
+    margin-bottom: 10px; /* Spazio sotto il titolo */
+}
+
+.create-post-form input,
+.create-post-form textarea {
+    width: 100%; /* Occupa la larghezza completa del modulo */
+    max-width: 400px; /* Larghezza massima per i campi di input */
+    padding: 10px; /* Padding per gli input */
+    margin-bottom: 20px; /* Spazio tra gli elementi */
+    box-sizing: border-box; /* Include il padding e il bordo nella larghezza */
+    font-size: 30px; /* Font size uniforme */
+}
+
+.create-post-form input {
+    color: #c05c89; /* Blu lavanda rosa */
+}
+
+.create-post-form textarea {
+    color: #797979; /* Grigio scuro */
+}
+
+.create-post-form button {
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #7E57C2; /* Viola medio */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* Aggiunge spazio sopra il pulsante */
+}
+
+.create-post-form button:hover {
+    background-color: #5E35B1; /* Viola scuro al passaggio del mouse */
+}

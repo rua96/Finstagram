@@ -85,12 +85,14 @@ bcrypt.compare(password,user.password).then(async(match) =>{
         {
             email: user.email,
             username: user.username,
+            id: user.id,
             status: true,
         },
         process.env.AUTH_SECRET)
     return res.json({
         authToken:authToken,
         email: user.email,
+        id: user.id,
         username:user.username,
         status: true
     });

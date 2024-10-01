@@ -1,13 +1,14 @@
 import React, {useContext} from 'react'
 import { AuthContext } from '../services/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import CreatePostForm from './components/CreatePostForm';
 import "../styles/Home.css"
 
 
 function Home() {
 
   const navigate =useNavigate();
-  const {login,setLogin} =useContext(AuthContext);
+  const {setLogin} =useContext(AuthContext);
 
   const onLogout =() => {
     localStorage.removeItem("AuthToken")
@@ -21,17 +22,16 @@ function Home() {
       
         <h1>FINSTAGRAM </h1>
         <h2>HOME</h2>
-        <h2>{login ? "LOGGED IN" : "Logged Out"} </h2>
       
-      
-
-      <button
+     <CreatePostForm />
+    <button
+    className="logout-button"
        type="button" 
        onClick={onLogout}>
         LogOut
       </button>
     </div>
-  )
+  );
 }
 
 export default Home

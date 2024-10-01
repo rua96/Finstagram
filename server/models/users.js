@@ -21,5 +21,10 @@ module.exports= (sequelize,datatypes)=> {
 
     })
 
+    users.associate = (models) => {
+        users.hasMany(models.posts, {foreignKey:'userId'});
+        models.posts.belongsTo(users, {foreignKey:'userId'});
+    }
+
     return users;
 }
