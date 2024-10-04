@@ -1,35 +1,40 @@
-import React, {useContext} from 'react'
-import { AuthContext } from '../services/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import React, {useState} from 'react'
 import CreatePostForm from './components/CreatePostForm';
+import ShowPosts from './components/ShowPosts';
+import Menu from './components/Menu';
 import "../styles/Home.css"
+
 
 
 function Home() {
 
-  const navigate =useNavigate();
-  const {setLogin} =useContext(AuthContext);
+  const [menu,setMenu] = useState("Show");
 
-  const onLogout =() => {
-    localStorage.removeItem("AuthToken")
-    navigate("/entry")
-    setLogin(false)
-  }
 
 
   return (
-    <div>
+    <div  className="homepage">
+
+          <h1>FINSTAGRAM </h1>
+          <br></br>
+              <Menu setMenu={(value)=> setMenu(value) }/>       
+        <br></br>
+        <br></br>
+          <h2>HOME</h2>
+          <div className='Contents'>
+    {
+          menu === "Show"
+        ?
+    
+      <ShowPosts/>
+       
+      :
+        
+      <CreatePostForm/>
+      }
       
-        <h1>FINSTAGRAM </h1>
-        <h2>HOME</h2>
-      
-     <CreatePostForm />
-    <button
-    className="logout-button"
-       type="button" 
-       onClick={onLogout}>
-        LogOut
-      </button>
+
+         </div>
     </div>
   );
 }

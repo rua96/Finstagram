@@ -9,7 +9,7 @@ body {
     align-items: center; /* Centra gli elementi orizzontalmente */
     border: 2px solid #5C6BC0; /* Bordo blu lavanda */
     padding: 20px; /* Padding aggiunto */
-    border-radius: 10px; /* Angoli arrotondati */
+   /* border-radius: 10px;  Angoli arrotondati */
   background-color: #d5add2;
 
 }

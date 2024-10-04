@@ -11,7 +11,7 @@ app.use(cors());
 
 const usersRouter =require('./routes/users');
 app.use('/users',usersRouter);
-const postsRouter = require('./routes/posts')
+const postsRouter =require('./routes/posts')
 app.use("/posts",postsRouter)
 db.sequelize.sync().then(()=>{
     app.listen(5555,() => {

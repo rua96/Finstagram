@@ -4,9 +4,17 @@ body {
   margin: 0; /* Rimuove il margine di default del body */
   display: flex; /* Rende il body flessibile */
   justify-content: center; /* Centra il contenuto orizzontalmente */
-  align-items: center; /* Centra il contenuto verticalmente */
-  height: 100vh; /* Altezza del 100% della viewport */
+  align-items: flex-start; /* Allinea il contenuto nella parte superiore */
+  min-height: 100vh; /* Altezza minima del 100% della viewport */
+  overflow-y: auto; /* Permette lo scrolling verticale */
 }
+
+.homepage {
+  width: 100%; /* Occupa tutta la larghezza disponibile */
+  max-width: 800px; /* Larghezza massima per la homepage */
+  padding: 20px; /* Padding per il contenuto */
+}
+
 
 h1 {
   color: #0c169c; /* blu scuro */
@@ -20,20 +28,6 @@ h2 {
   margin-bottom: 20px;
 }
 
-.logout-button {
-  margin-top: 30px; /* Aggiunge spazio sopra il bottone */
-  padding: 10px 20px; /* Padding per il bottone */
-  color: white;
-  background-color: #7E57C2; /* Viola medio */
-  border: none; /* Rimuove il bordo di default del pulsante */
-  border-radius: 5px; /* Angoli arrotondati al pulsante */
-  cursor: pointer; /* Cambia il cursore quando si passa sopra il pulsante */
-  transition: background-color 0.3s ease; /* Transizione al passaggio del mouse */
-}
-
-.logout-button:hover {
-  background-color: #5E35B1; /* Viola scuro al passaggio del mouse */
-}
 
 
 button {
@@ -45,6 +39,7 @@ button {
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+
 }
 
 button:hover {
@@ -63,7 +58,7 @@ button:hover {
   max-width: 400px; /* Larghezza massima per il form */
   border: 2px solid #5C6BC0; /* Bordo blu lavanda */
   border-radius: 10px; /* Angoli arrotondati */
-  background-color: #727272;
+  background-color: #939491;
 }
 
 .home-form input {
@@ -88,3 +83,40 @@ button:hover {
   background-color: #5E35B1; /* Viola scuro al passaggio del mouse */
 }
 
+
+.post {
+  background-color: #f8d1e1; /* Sfondo simile al rosa del modulo */
+  padding: 0px;
+  margin: 15px 0; /* Margine verticale tra i post */
+  /*border-radius: 10px;  Angoli arrotondati */
+  border: 2px solid #5C6BC0; /* Bordo blu lavanda */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombra per profondità */
+  width: 100%; /* Occupa la larghezza completa del contenitore */
+  max-width: 600px; /* Larghezza massima per ogni post */
+}
+
+.post h3 {
+  color: #0c169c; /* Blu scuro per il titolo */
+  font-size: 24px; 
+  margin-bottom: 5px;
+}
+
+.post p {
+  color: #797979; /* Grigio scuro per il testo */
+  font-size: 18px; 
+  margin-bottom: 15px;
+  margin-top: 0;
+  padding: 8px;
+  background-color: #e7e7e7; /* Sfondo grigio chiaro per il testo */
+  /*border-radius: 5px;  Angoli arrotondati */
+}
+
+
+
+.post h3, .post p {
+  margin: 0; /* Rimuove i margini */
+}
+
+.Contents {
+  margin-top: 7vh;
+}
