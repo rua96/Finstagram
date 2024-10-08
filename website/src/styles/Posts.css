@@ -77,29 +77,34 @@ body {
   
   
   .post {
-    background-color: #c185b2;
-    padding: 15px;
-    margin: 15px 0;
+    color:  #4367e0;
+    background-color:rgb(232, 211, 182);
+    padding: 10px;
+    margin: 10px 0;
     /* border-radius: 8px; */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .post h3 {
-    color: #81ba86;; 
-    font-size: 24px; 
+    color:  #4367e0; 
+    font-size: 20px; 
     margin-bottom: 0px;
-    padding: 8px;
-    /* border-radius: 6px; */
-    background-color: #cef5f7;
+  /* border-radius: 6px; */
+    background-color: rgb(232, 211, 182);
+  }
+  .description {
+    color:  #4367e0; 
+    font-size: 18px; 
+    margin-bottom: 0px;
+  /* border-radius: 6px; */
+    background-color: rgb(232, 211, 182);
   }
   
   .post p {
-    color: #81ba86;
-    font-size: 18px; 
     margin-bottom: 15px;
     margin-top : 0;
     padding: 8px;
-    background-color:#cef5f7;
+    background-color:rgb(232, 211, 182);
     /* border-radius: 6px; */
   }
   
@@ -108,5 +113,16 @@ body {
   }
   
   .postUser {
-    font-size: 10px ;
+    font-size: 15px ;
+    color:rgb(174, 65, 233);
   }
+  .buttonDelete {
+    padding: 3px 6px;
+    margin: 3px 10px 3px auto; 
+    color: white;
+    background-color: rgb(17, 0, 255);
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    display: block;
+}

@@ -12,7 +12,10 @@ import { PrivateRoute } from "./services/PrivateRoute";
 import './styles/App.css';
 import Entry from './pages/Entry';
 import Home from './pages/Home';
+import UserProfile from "./pages/UserProfile";
 
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
 
 function App() {
 
@@ -51,6 +54,7 @@ function App() {
   }
 
   return (
+    <>
     <AuthContext.Provider value={{login, setLogin}}>
     <Router>
       <Routes>
@@ -58,10 +62,15 @@ function App() {
         <Route path="/Home" element = {<PrivateRoute/>} >
           <Route path="/Home" element ={<Home/>} />
         </Route> 
+        <Route path="/user/:username" element = {<PrivateRoute/>} >
+          <Route path="/user/:username" element ={<UserProfile/>} />
+        </Route> 
         <Route path="*" element={ <Navigate to={login ? "/home" :"/entry"}/>} />
       </Routes>
     </Router>
     </AuthContext.Provider>
+    <ToastContainer />
+    </>
   );
 }
 

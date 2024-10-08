@@ -21,8 +21,6 @@ router.post("/", Authentication.validateToken, async (req,res)=> {
  
     return res.json({message:"Il post e' stato CREATO / Post has been CREATED"})
 
-    console.log("ID", req.user.id);
-
 }
 )
 
@@ -42,6 +40,27 @@ router.post("/", Authentication.validateToken, async (req,res)=> {
           
          
     return res.json(getPosts)
+})
+
+router.get("/:username", validateToken, async (req,res)=> {
+    const {username} = req.params;
+
+    let user = await users.findOne({
+        where: {
+            username:username,
+        }
+    })
+    if(!user){
+        return res.json ({error: "User Does Not Exist!"})
+    }
+
+    let userPosts = await posts.findAll({
+        where: {
+            userId: user.id,
+            status:"active"
+        }
+    })
+    return res.json(userPosts)
 })
 
 router.delete ("/:id", validateToken , async (req,res) => {

@@ -39,7 +39,8 @@ function ShowPosts() {
              { posts?.map((post) => {
                  return(
                     <Posts post={post}/>)
-        })}
+        })
+        }
     </>
 )
   

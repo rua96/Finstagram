@@ -84,38 +84,7 @@ button:hover {
 }
 
 
-.post {
-  background-color: #f8d1e1; /* Sfondo simile al rosa del modulo */
-  padding: 0px;
-  margin: 15px 0; /* Margine verticale tra i post */
-  /*border-radius: 10px;  Angoli arrotondati */
-  border: 2px solid #5C6BC0; /* Bordo blu lavanda */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombra per profondità */
-  width: 100%; /* Occupa la larghezza completa del contenitore */
-  max-width: 600px; /* Larghezza massima per ogni post */
-}
 
-.post h3 {
-  color: #0c169c; /* Blu scuro per il titolo */
-  font-size: 24px; 
-  margin-bottom: 5px;
-}
-
-.post p {
-  color: #797979; /* Grigio scuro per il testo */
-  font-size: 18px; 
-  margin-bottom: 15px;
-  margin-top: 0;
-  padding: 8px;
-  background-color: #e7e7e7; /* Sfondo grigio chiaro per il testo */
-  /*border-radius: 5px;  Angoli arrotondati */
-}
-
-
-
-.post h3, .post p {
-  margin: 0; /* Rimuove i margini */
-}
 
 .Contents {
   margin-top: 7vh;

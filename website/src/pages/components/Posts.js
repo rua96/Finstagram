@@ -1,10 +1,25 @@
-import React from 'react' // rfce + invio
+import React , {useContext, useEffect, useState}from 'react' // rfce + invio
 import "../../styles/Posts.css";
-
 import axios from 'axios';
+import {toast} from "react-toastify";
+import { AuthContext } from '../../services/AuthContext';
 
 
 function Posts(props) {
+  const {login} = useContext (AuthContext);
+  const [username,setUsername] = useState("");
+
+  useEffect(()=> {
+
+    if(props?.username) {
+        setUsername(props?.username);
+      } else if(props?.post?.user?.username) {
+        setUsername(props?.post?.user?.username);
+      }
+      
+            
+
+  }, [props])
 
     const onDelete = async() =>{
 
@@ -20,9 +35,14 @@ function Posts(props) {
 
   return (
     <div className='post' id={props?.id}>
-    <button className='buttonDelete' onClick={onDelete}> DELETE</button>
+    {
+      login.username === username?
+      <button className='buttonDelete' onClick={onDelete}> X </button>
+    
+    : <></>
+    }
     <h3>{props?.post?.title}</h3>
-    <p>{props?.post?.description}</p>
+    <p className='description'>{props?.post?.description}</p>
     <p className='postUser'>{props?.post?.user?.username}</p>
     </div>
   )
