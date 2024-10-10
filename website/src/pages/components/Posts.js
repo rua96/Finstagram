@@ -30,11 +30,13 @@ function Posts(props) {
             }
           }
         )
+        props.deletePost(props?.post?.id)
+        toast.success("You have Delected Your Post")
 
     }
 
   return (
-    <div className='post' id={props?.id}>
+    <div className='post' id={props?.post?.id}>
     {
       login.username === username?
       <button className='buttonDelete' onClick={onDelete}> X </button>
@@ -43,6 +45,7 @@ function Posts(props) {
     }
     <h3>{props?.post?.title}</h3>
     <p className='description'>{props?.post?.description}</p>
+    <p className='date'>{props?.post?.createdAt}</p>
     <p className='postUser'>{props?.post?.user?.username}</p>
     </div>
   )

@@ -3,10 +3,13 @@ import "../../styles/ShowPosts.css"
 import axios from 'axios'
 import Posts from './Posts'
 import {useEffect, useState} from "react";
+import {toast } from 'react-toastify';
+import Sorting from '../../services/Sorting';
 
 function ShowPosts() {
     const[posts, setPosts] = useState([]);
     const[loading,setLoading] = useState(true);
+    const [order, setOrder] = useState ("oldest");
     useEffect(() => {
         getShowPosts();
 
@@ -20,25 +23,46 @@ function ShowPosts() {
                     }
                 })
 
-                console.log("Res", response)
+             console.log ("Res", response)
 
         if(response?.data?.error) {
-            console.log(response.data.error);
+            toast.error ("Error" , response.data.error);
             } else {
-            setPosts(response?.data)
+            setPosts(Sorting.sortPosts(order,response.data))
+            
             }
             setLoading(false);
                   
         } 
+
+        const deletePost= (id) => {
+            setPosts( 
+                posts.filter((post) => post.id !== id)
+            )
+        }
+
         if(loading) {
             return <></>
         }
   
     return (
          <>   <h1> Show Posts </h1>
-             { posts?.map((post) => {
+                    <div> 
+                        <button className='buttonOld' onClick= {() => {
+                       let orderedPosts = Sorting.sortPosts("oldest", [... posts])
+                       setPosts(orderedPosts)
+                        }}>
+                         Oldest </button>
+                        <button className='buttonOld' onClick= {() => {
+                       let orderedPosts = Sorting.sortPosts("newest", [... posts])
+                       setPosts(orderedPosts)
+                        }}>
+                         Newest </button>
+                    </div>
+
+             { posts?.length >= 1 && posts?.map((post) => {
                  return(
-                    <Posts post={post}/>)
+                    <Posts post={post} deletePost={deletePost}/>)
         })
         }
     </>

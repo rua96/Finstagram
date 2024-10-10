@@ -1,27 +1,33 @@
 import React from 'react'   //rfce
 import "../../styles/CreatePostForm.css"
 import axios from 'axios'
+import { toast } from 'react-toastify'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 function CreatePostForm() {
+
+    const navigate = useNavigate();
+
     const createPost = async (e) => {
         e.preventDefault();
-        console.log(e.target[0].value,e.target[1].value)
-
-    
+        
+        
         await axios.post("http://localhost:5555/posts",
             
             {
                 title : e.target[0].value,
                 description: e.target[1].value,
             },
-           
+            
             {
                 headers:  {
                     authToken: localStorage.getItem("AuthToken")
                 }
             }
-    
-    )
+            
+        )
+        toast.success("Il tuo Post è stato creato! ")
+        navigate("/showposts")
         
     }
   

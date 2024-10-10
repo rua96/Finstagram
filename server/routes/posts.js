@@ -3,6 +3,7 @@ const router = express.Router() ;
 const {posts, users} = require ("../models")
 const{validateToken} = require ("../middlewares/Authentication")
 
+
 const Authentication =require("../middlewares/Authentication")
 const {Op} = require("sequelize");
 
@@ -35,8 +36,9 @@ router.post("/", Authentication.validateToken, async (req,res)=> {
             include:[{
                 model:users,
                 attributes: ["username"]
-            }]
-   });
+            }], 
+            /*order:[["createdAt","DESC"]]*/
+           });
           
          
     return res.json(getPosts)
@@ -67,7 +69,8 @@ router.delete ("/:id", validateToken , async (req,res) => {
 
     const{id} = req.params;
 
-    console.log("ri", id)
+   
+    console.log ("ri", id)
 
     await posts.update(
     {

@@ -13,6 +13,7 @@ import './styles/App.css';
 import Entry from './pages/Entry';
 import Home from './pages/Home';
 import UserProfile from "./pages/UserProfile";
+import {toast} from "react-toastify";
 
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
@@ -40,7 +41,7 @@ function App() {
       )
     
     if(response?.data?.error) {
-      console.log(response.data.error);
+      toast.error (response.data.error);
     } else if(response?.data?.user){
       setLogin(response?.data?.user)
     }

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../services/AuthContext';
 import "../../styles/Login.css"
 import Validation from '../../services/Validation'
+import { toast } from "react-toastify"
 
 function Login(props) {
 
@@ -17,12 +18,12 @@ function Login(props) {
       console.log("E", e.target[0].value , e.target[1].value);
 
       if(!e.target[0].value){
-        console.log("put your username")
+        toast.success("put your username")
         return;
       }
 
       if(!e.target[1].value){
-        console.log("put your password")
+        toast.success("put your password")
         return;
       };
 
@@ -35,14 +36,16 @@ function Login(props) {
       )
      
       if(response?.data?.error) {
-        console.log("Error", response.data.error);
+        toast.error("Error", response.data.error);
       }else if(response?.data?.status) {
         setLogin({
           email: response?.data?.email,
           username: response?.data?.username,
         })
+        localStorage.setItem("AuthToken",response?.data?.authToken);
         navigate("/home");
-        localStorage.setItem("AuthToken",response?.data?.authToken)
+        toast.success("You have logged in!")
+
         }
       }
       return (            

@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import { AuthContext } from '../../services/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import "../../styles/Menu.css"
+import { toast } from 'react-toastify'
 
 
 
@@ -13,6 +14,7 @@ function Menu(props) {
       localStorage.removeItem("AuthToken")
       navigate("/entry")
       setLogin(false)
+      toast.success("You have logged Out!")
     }
 
   return (

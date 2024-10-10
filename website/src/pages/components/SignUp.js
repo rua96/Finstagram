@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import "../../styles/SignUp.css"
+import{toast} from "react-toastify"
 
 function SignUp(props) {
 
@@ -8,7 +9,27 @@ function SignUp(props) {
     
       e.preventDefault();
 
-      console.log("E", e.target[0].value , e.target[1].value,e.target[2].value);
+      console.log ("E", e.target[0].value , e.target[1].value,e.target[2].value);
+
+      console.log("E", e.target[0].value , e.target[1].value);
+
+      if(!e.target[0].value){
+        toast.success("Put your Email!")
+        return;
+      }
+
+      if(!e.target[1].value){
+        toast.success("Put your Username!")
+        return;
+      };
+
+      console.log("E", e.target[0].value , e.target[1].value);
+
+      if(!e.target[2].value){
+        toast.success("Put your Password!")
+        return;
+      };
+
 
       let response = await axios.post( 
        "http://localhost:5555/users",
@@ -19,7 +40,8 @@ function SignUp(props) {
         password: e.target[2].value,
       }   
     )
-     console.log(response.data);
+    toast.success ("Utente Creato!");
+    console.log( response.data);
   }
   
 
