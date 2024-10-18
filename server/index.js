@@ -13,6 +13,11 @@ const usersRouter =require('./routes/users');
 app.use('/users',usersRouter);
 const postsRouter =require('./routes/posts')
 app.use("/posts",postsRouter)
+const postsLikesRouter=require('./routes/postsLikes')
+app.use("/postsLikes",postsLikesRouter)
+const postsCommentsRouter=require('./routes/postsComments')
+app.use("/postsComments",postsCommentsRouter)
+
 db.sequelize.sync().then(()=>{
     app.listen(5555,() => {
         console.log ("Server running on PORT 5555")

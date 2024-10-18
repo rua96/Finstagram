@@ -52,11 +52,11 @@ body {
     cursor: pointer; /* Cambia il cursore quando si passa sopra il pulsante */
     font-size: 18px; /* Dimensione del font uniforme */
 }
-
+/*
 .signup button:hover {
-    background-color: #5E35B1; /* Viola scuro al passaggio del mouse */
+    background-color: #5E35B1;  Viola scuro al passaggio del mouse 
 }
-
+*/
 .error {
     color: red;
     font-weight: bold;

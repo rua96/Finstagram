@@ -1,0 +1,19 @@
+
+.iLike
+{
+width: 5px; 
+height:5px;
+}
+ .buttonLike
+  {
+    padding: 3px 6px;
+    margin: 3px 10px 3px auto; 
+    color: white;
+    background-color:  rgb(232, 211, 182);
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    position: left;
+    width: 50px;
+    height:50px;
+  }

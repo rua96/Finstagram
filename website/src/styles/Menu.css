@@ -1,16 +1,15 @@
 .Menu {
         position: fixed;
-       
         width: 100vw;
         height: 7vh;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         padding: 0 5vw;
         box-sizing : border-box;
         gap: 2vh;
         left: 0;
-        top:0;
+        bottom:0;
 }
 
 .start {
@@ -18,17 +17,31 @@
     gap:2vw;
 }
 
-.buttonHome
+
+
+.buttonHome1
 {
-    background-color: black;
+    background-color: rgb(255, 255, 255);
+    padding: 7 px;
+
+    
+
 
 }
+/*
+.buttonHome1:hover {
+    background-color:aqua;
+}*/
 
-.buttonHome :hover {
-    background-color: #b13535; 
+ .buttonLogout {
+    background-color: rgb(0, 0, 0);
+
   }
   
- .logout-button:hover {
-    background-color: #5E35B1; /* Viola scuro al passaggio del mouse */
+  .imma
+  {
+    width: 25px; 
+    height:25px;
   }
+
   

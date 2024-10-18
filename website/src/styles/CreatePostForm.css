@@ -62,7 +62,8 @@ body {
     transition: background-color 0.3s ease;
     margin-top: 10px; /* Aggiunge spazio sopra il pulsante */
 }
-
+/*
 .create-post-form button:hover {
-    background-color: #5E35B1; /* Viola scuro al passaggio del mouse */
+    background-color: #5E35B1;  Viola scuro al passaggio del mouse 
 }
+*/

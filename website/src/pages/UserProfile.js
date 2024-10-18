@@ -3,16 +3,22 @@ import { useParams } from 'react-router-dom';
 import '../styles/UserProfile.css';
 import axios from 'axios';
 import Posts from './components/Posts';
+import { useNavigate } from 'react-router-dom';
+
+
+
 
 function UserProfile() {
     const{username} = useParams();
-    const [posts, setPosts] = useState([])  
+    const [posts, setPosts] = useState([]) ;
+    const navigate = useNavigate(); 
     
     useEffect(() => {
         fetchData();
 },[username])
 
     const fetchData = async() => {
+      try {
         let response = await axios.get(
             "http://localhost:5555/posts/"+username,
         
@@ -24,27 +30,36 @@ function UserProfile() {
 
  )
 
-    setPosts(response?.data)
+    setPosts(response?.data);
+  } catch (error) {
+    console.error("Error fetching posts:", error);
 }
+};
+const deletePost = (postId) => {
+  // Aggiorna lo stato dei post per rimuovere il post eliminato
+  setPosts((prevPosts) => prevPosts.filter(post => post.id !== postId));
+};
   return (
+    
     <div className="UserProfile">
-       <h1> {username} Profile </h1>
+       <h1 className="finstagram">FINSTAGRAM </h1>
+          <br/>
+       <h1> {username}  </h1>
        <h2>Posts</h2>
         { posts.length>=1 && posts?.map((post) => {
-                 return(
-                    <Posts
-                     post={post}
-                     username= {username}/>)
-        })
+          return(
+            <Posts
+            key={post.id}
+            post={post}
+            username= {username}
+            deletePost={deletePost}/>)
+          })
         }
         
-        
-        
-        
-        
-        
+       
         </div>
+       
   )
 }
 
-export default UserProfile
+export default UserProfile;

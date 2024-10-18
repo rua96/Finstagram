@@ -23,7 +23,7 @@ function ShowPosts() {
                     }
                 })
 
-             console.log ("Res", response)
+             console.log ("Res", response.data)
 
         if(response?.data?.error) {
             toast.error ("Error" , response.data.error);
@@ -48,12 +48,15 @@ function ShowPosts() {
     return (
          <>   <h1> Show Posts </h1>
                     <div> 
-                        <button className='buttonOld' onClick= {() => {
+                        <button className='buttonOld' onClick= {(e) => {
+                            e.preventDefault()
                        let orderedPosts = Sorting.sortPosts("oldest", [... posts])
                        setPosts(orderedPosts)
                         }}>
                          Oldest </button>
-                        <button className='buttonOld' onClick= {() => {
+                        <button className='buttonOld' onClick= {(e) => {
+                            e.preventDefault()
+
                        let orderedPosts = Sorting.sortPosts("newest", [... posts])
                        setPosts(orderedPosts)
                         }}>

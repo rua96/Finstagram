@@ -17,7 +17,7 @@ h2 {
 
 button {
   font-size: 18px;
-  padding: 10px 20px;
+ 
   background-color: #7E57C2; /* Viola medio */
   color: white;
   border: none;
@@ -25,7 +25,8 @@ button {
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
-
+/*
 button:hover {
-  background-color: #5E35B1; /* Viola scuro al passaggio del mouse */
+  background-color: #5E35B1;  Viola scuro al passaggio del mouse 
 }
+*/

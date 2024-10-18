@@ -1,0 +1,12 @@
+.Order{
+    display:flex;
+    justify-content: center ;
+    margin-right: 5px;
+    gap: 5px;
+}
+.buttonShow
+{
+    font-size: 10px;
+    background-color: rgb(42, 151, 205);
+    padding: 4px 8px;
+}

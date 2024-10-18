@@ -1,0 +1,33 @@
+.Commenti{
+    position:relative;
+    background-color: rgb(56, 216, 173);
+    margin:1vh 2vh 1vw 2vw;
+}
+.pdata{
+    font-size: 12px;
+    color: rgb(15, 31, 246);
+}
+
+.ButtonCo {
+        font-size: 10px;
+        background-color: rgb(36, 186, 228) ;
+        padding: 4px 8px;
+    }
+.pCommenti 
+{
+    font: 20px;
+}
+
+.ButtonDeleteComment{
+    position: absolute;
+    top:0;
+    right:0;
+    padding: 3px 6px;
+    margin: 3px 10px 3px auto;
+    color: white;
+    background-color: rgb(17, 0, 255);
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    display: block;
+}

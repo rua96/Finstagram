@@ -1,6 +1,6 @@
 const express = require ("express")
 const router = express.Router() ;
-const {posts, users} = require ("../models")
+const {posts, users,postsLikes} = require ("../models")
 const{validateToken} = require ("../middlewares/Authentication")
 
 
@@ -33,10 +33,19 @@ router.post("/", Authentication.validateToken, async (req,res)=> {
                     [Op.ne]: "deleted"
                 }
             },
-            include:[{
-                model:users,
-                attributes: ["username"]
-            }], 
+            include:
+            [
+                {
+                    model:users,
+                    attributes: ["username"]
+                },
+                {
+                    model:postsLikes,
+                  
+
+
+                }
+            ], 
             /*order:[["createdAt","DESC"]]*/
            });
           
@@ -60,7 +69,20 @@ router.get("/:username", validateToken, async (req,res)=> {
         where: {
             userId: user.id,
             status:"active"
-        }
+        },
+        include:
+            [
+                {
+                    model:users,
+                    attributes: ["username"]
+                },
+                {
+                    model:postsLikes,
+                  
+
+
+                }]
+        
     })
     return res.json(userPosts)
 })
