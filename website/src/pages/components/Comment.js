@@ -45,7 +45,7 @@ function Comment(props) {
 
     return (
       <div className='Commenti' id={props?.id}>
-        <p className='pCommenti'>{props?.comment?.comment}</p>
+        <p  className='pCommenti'>{props?.comment?.comment}</p>
         <p className='pdata'>{DateService.formatDate(props?.comment?.createdAt)}</p>
         <div className='CommentButtons'>
               <button className = "ButtonCo" onClick={() => {navigate("/user/" + username)}}>

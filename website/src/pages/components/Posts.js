@@ -57,14 +57,18 @@ function Posts(props) {
                     <button className='buttonDelete' onClick={onDelete}> X </button>
                 : <></>
             }
-            <h3>{props?.post?.title}</h3>
-            <p className='description'>{props?.post?.description}</p>
-            <p className='date'>{DateService.formatDate(props?.post?.createdAt)}</p>
-            <LikeSection postId={props?.post?.id} likes={props?.post?.postsLikes} />
-            <button type="button"  className="ButtonPosts" onClick={() => { setToggle(!toggle) }}> 
-                <img class name="immacomment" src={CommentIcon} alt="Comments"/>
-                
-            </button>
+            <form className="formPosts">
+                <div className="formPostsdiv">
+                    <h3>{props?.post?.title}</h3>
+                    <p className='description'>{props?.post?.description}</p>
+                    <p className='date'>{DateService.formatDate(props?.post?.createdAt)}</p>
+                    <LikeSection postId={props?.post?.id} likes={props?.post?.postsLikes} />
+                    <button type="button"  className="ButtonPosts" onClick={() => { setToggle(!toggle) }}> 
+                        <img class name="immacomment" src={CommentIcon} alt="Comments"/>
+                    
+                     </button>
+                </div>
+            
             {
                 toggle ?
                     <CommentsSection postId={props?.post?.id} />
@@ -73,6 +77,7 @@ function Posts(props) {
             <div>
                 <button className='postUser' onClick={() => navigate('/user/' + username)}>{username}</button>
             </div>
+            </form>
         </div>
     );
 }

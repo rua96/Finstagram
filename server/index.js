@@ -17,6 +17,8 @@ const postsLikesRouter=require('./routes/postsLikes')
 app.use("/postsLikes",postsLikesRouter)
 const postsCommentsRouter=require('./routes/postsComments')
 app.use("/postsComments",postsCommentsRouter)
+const imagesRouter = require ('./routes/images');
+app.use('/images', imagesRouter)
 
 db.sequelize.sync().then(()=>{
     app.listen(5555,() => {

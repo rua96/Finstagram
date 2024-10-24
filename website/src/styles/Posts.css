@@ -1,3 +1,15 @@
+.formPosts{
+  display: flex; /* Aggiungi display flex */
+  flex-direction: column; /* Dispone gli elementi in colonna */
+  align-items: center; /* Centra gli elementi orizzontalmente */
+  border: 2px solid #5C6BC0; /* Bordo blu lavanda */
+  padding: 20px; /* Padding aggiunto */
+  border-radius: 10px; /* Angoli arrotondati */
+  background-color: #d5add2;
+}
+
+
+
 body {
     text-align: center;
     background-color: #B2EBF2; /* Celestino chiaro */
@@ -76,7 +88,8 @@ body {
   
   .post {
     color:  #4367e0;
-    background-color:rgb(232, 211, 182);
+    background-color:#d5add2;
+    
  
      
     ;
@@ -87,32 +100,29 @@ body {
   }
   
   .post h3 {
-    color:  #4367e0; 
-    font-size: 20px; 
-    margin-bottom: 0px;
-  /* border-radius: 6px; */
-    background-color: rgb(232, 211, 182);
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-bottom: -32px; /* Margine negativo per eliminare lo spazio */
+    box-sizing: border-box;
+    font-size: 30px;
+    color: #4367e0;
+    border: 2px solid rgb(118, 118, 118);
   }
+  
   .description {
-    color:  #4367e0; 
-    font-size: 18px; 
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
     margin-bottom: 0px;
-  /* border-radius: 6px; */
-    background-color: rgb(232, 211, 182);
+    box-sizing: border-box;
+    font-size: 30px;
+    color: #4367e0;
+    border: 2px solid rgb(118, 118, 118);
   }
   
- /* .post p {
-    margin-bottom: 15px;
-    margin-top : 0;
-    padding: 8px;
-    
-    background-color:rgb(232, 211, 182);
   
-  }*/
-  
-  .post h3, .post p {
-    margin: 0; /* Rimuove i margini */
-  }
+
   
   .postUser{
     font-size: 10px ;
