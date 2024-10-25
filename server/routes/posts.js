@@ -1,112 +1,113 @@
-const express = require ("express")
-const router = express.Router() ;
-const {posts, users,postsLikes} = require ("../models")
-const{validateToken} = require ("../middlewares/Authentication")
+const express = require("express");
+const router = express.Router();
+const { posts, users, postsLikes, postsComments } = require("../models");
+const { validateToken } = require("../middlewares/Authentication");
+const Authentication = require("../middlewares/Authentication");
+const { Op } = require("sequelize");
+const { postImages } = require("../models");
 
+router.post("/", Authentication.validateToken, async (req, res) => {
+  const { title, description } = req.body;
 
-const Authentication =require("../middlewares/Authentication")
-const {Op} = require("sequelize");
+  let post = await posts.create({
+    title: title,
+    description: description,
+    userId: req.user.id,
+    status: "active",
+  });
 
-router.post("/", Authentication.validateToken, async (req,res)=> {
-    const {title, description} = req.body;
-    
+  return res.json(post);
+});
 
-    await posts.create({
-        title: title,
-        description:description,
-        userId: req.user.id,
-        status: "active"
-    })
+router.get("/", Authentication.validateToken, async (req, res) => {
+  let getPosts = await posts.findAll({
+    where: {
+      status: {
+        [Op.ne]: "deleted",
+      },
+    },
+    include: [
+      {
+        model: users,
+        attributes: ["username"],
+      },
+      {
+        model: postsLikes,
+      },
+      {
+        model: postsComments,
+        include: [
+          {
+            model: users,
+            attributes: ["username"],
+          },
+        ],
+      },
+      {
+        model: postImages,
+      },
+    ],
+  });
 
+  return res.json(getPosts);
+});
 
- 
-    return res.json({message:"Il post e' stato CREATO / Post has been CREATED"})
+router.get("/:username", validateToken, async (req, res) => {
+  const { username } = req.params;
 
-}
-)
+  let user = await users.findOne({
+    where: {
+      username: username,
+    },
+  });
+  if (!user) {
+    return res.json({ error: "User Does Not Exist!" });
+  }
 
-   router.get("/", Authentication.validateToken, async (req,res)=> {
-        
-        let getPosts = await posts.findAll({
-            where: {
-                status: {
-                    [Op.ne]: "deleted"
-                }
-            },
-            include:
-            [
-                {
-                    model:users,
-                    attributes: ["username"]
-                },
-                {
-                    model:postsLikes,
-                  
+  let userPosts = await posts.findAll({
+    where: {
+      userId: user.id,
+      status: "active",
+    },
+    include: [
+      {
+        model: users,
+        attributes: ["username"],
+      },
+      {
+        model: postsLikes,
+      },
+      {
+        model: postsComments,
+        include: [
+          {
+            model: users,
+            attributes: ["username"],
+          },
+        ],
+      },
+    ],
+  });
+  return res.json(userPosts);
+});
 
+router.delete("/:id", validateToken, async (req, res) => {
+  const { id } = req.params;
 
-                }
-            ], 
-            /*order:[["createdAt","DESC"]]*/
-           });
-          
-         
-    return res.json(getPosts)
-})
+  console.log("ri", id);
 
-router.get("/:username", validateToken, async (req,res)=> {
-    const {username} = req.params;
-
-    let user = await users.findOne({
-        where: {
-            username:username,
-        }
-    })
-    if(!user){
-        return res.json ({error: "User Does Not Exist!"})
-    }
-
-    let userPosts = await posts.findAll({
-        where: {
-            userId: user.id,
-            status:"active"
-        },
-        include:
-            [
-                {
-                    model:users,
-                    attributes: ["username"]
-                },
-                {
-                    model:postsLikes,
-                  
-
-
-                }]
-        
-    })
-    return res.json(userPosts)
-})
-
-router.delete ("/:id", validateToken , async (req,res) => {
-
-    const{id} = req.params;
-
-   
-    console.log ("ri", id)
-
-    await posts.update(
+  await posts.update(
     {
-        status: "deleted"
+      status: "deleted",
     },
     {
-        where:{
-            id : id
-        }
-
+      where: {
+        id: id,
+      },
     }
-)
+  );
 
-return res.json({ message: "Deleted Post"})
-})
+  return res.json({ message: "Deleted Post" });
+});
 
-module.exports = router
+module.exports = router;

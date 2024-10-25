@@ -1,67 +1,50 @@
-import React, { useEffect , useState, useContext} from 'react'
-import CommentCreate from './CommentCreate';
-import ShowComments from './ShowComments';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import Sorting from '../../services/Sorting';
-import { AuthContext } from '../../services/AuthContext';
+import React, { useEffect, useState, useContext } from "react";
+import CommentCreate from "./CommentCreate";
+import ShowComments from "./ShowComments";
+import axios from "axios";
+import { toast } from "react-toastify";
+import Sorting from "../../services/Sorting";
+import { AuthContext } from "../../services/AuthContext";
 import "../../styles/CommentsSection.css";
 
 function CommentsSection(props) {
-
   const [loading, setLoading] = useState(true);
-  const [comments,setComments] = useState ([]);
-  const {login}=useContext(AuthContext);
+  const [comments, setComments] = useState([]);
+  const { login } = useContext(AuthContext);
 
   useEffect(() => {
-      fetchComments()
-  },[props]) 
-
-  const fetchComments = async ()=>{   
-    let response = await axios.get("http://localhost:5555/postsComments/" + props?.postId,
-        {
-            headers: {
-                authToken: localStorage.getItem("AuthToken")
-            }
-        })
-
-        console.log(response.data, "Response console")
-
-        if(response?.data?.error) {
-            toast.error(response.data.error);
-        } else if(response?.data) {
-            setComments(Sorting.sortComments("newest",response.data))
-        }
+    setComments(Sorting.sortComments("newest", props?.comments));
     setLoading(false);
+  }, [props]);
+
+  if (loading) {
+    return <></>;
   }
-
-
 
   const onCreate = (comment) => {
-    setComments(
-      [
-        {
-          ...comment,
-          user: {
-            username: login.username
-          }
-        }
-        , ...comments
-      ]
-  )
-
-  }
-
-  if(loading) {
-      return <></>
-  }
+    setComments([
+      {
+        ...comment,
+        user: {
+          username: login.username,
+        },
+      },
+      ...comments,
+    ]);
+  };
 
   return (
-    <div className='CommentsSection'>
-        <ShowComments postId={props?.postId} comments={comments}/>
-        <CommentCreate postId={props?.postId} onCreate={onCreate}/>
+    <div className="CommentsSection">
+      <CommentCreate
+        postId={props?.postId}
+        onCreate={onCreate}
+        addComment={() => {
+          props?.addcomment();
+        }}
+      />
+      <ShowComments postId={props?.postId} comments={comments} />
     </div>
-)
+  );
 }
 
-export default CommentsSection
+export default CommentsSection;

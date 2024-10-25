@@ -16,7 +16,7 @@ module.exports= (sequelize,datatypes)=> {
             allowNull:true,
             unique:false,
         }
-     })
+      })
 
     posts.associate=(models) => {
         posts.hasMany(models.postsLikes, {foreignKey: "postId"})
@@ -24,6 +24,10 @@ module.exports= (sequelize,datatypes)=> {
 
         posts.hasMany(models.postsComments, {foreignKey: "postId"})
         models.postsComments.belongsTo(posts, {foreignKey:"postId"})
-    }
+
+        posts.hasOne(models.postImages, {foreignKey: "postId"})
+        models.postImages.belongsTo(posts, {foreignKey:"postId"})
+
+        }
     return posts;
 }
