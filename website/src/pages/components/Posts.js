@@ -39,7 +39,9 @@ function Posts(props) {
   }, [props]);
 
   const onGetImage = async (key) => {
-    setImage(await Images.getPostImage(key));
+    let getImage = await Images.getPostImage(key);
+    const imageBlob = new Blob([getImage]);
+    setImage(imageBlob);
   };
 
   const onDelete = async () => {
@@ -92,6 +94,16 @@ function Posts(props) {
       )}
       <div className="formPosts">
         <div className="formPostsdiv">
+          {image ? (
+            <img
+              width="100%"
+              height="100%"
+              src={URL.createObjectURL(image)}
+              alt="Post Image"
+            />
+          ) : (
+            <>Loading...</>
+          )}
           <h3>{props?.post?.title}</h3>
           <p className="description">{props?.post?.description}</p>
           <p className="date">

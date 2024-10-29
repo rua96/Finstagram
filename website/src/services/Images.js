@@ -9,6 +9,7 @@ class Images {
         headers: {
           authToken: localStorage.getItem("AuthToken"),
         },
+        responseType: "blob",
       }
     );
     if (response?.data?.error) {

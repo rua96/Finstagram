@@ -1,6 +1,9 @@
 body {
   text-align: center;
-  background-color: #B2EBF2; /* Celestino chiaro */
+  background-image: url("../assets/horse.jpg");
+  background-size: cover; /* Copre tutto lo spazio dell'elemento */
+  background-position: center; /* Centra l'immagine */
+  background-color: #b2ebf2; /* Celestino chiaro */
   margin: 0; /* Rimuove il margine di default del body */
   display: flex; /* Rende il body flessibile */
   justify-content: center; /* Centra il contenuto orizzontalmente */
@@ -17,7 +20,7 @@ body {
 }
 
 .finstagram {
-  color:rgb(19, 92, 195);
+  color: rgb(19, 92, 195);
 }
 
 h1 {
@@ -27,12 +30,10 @@ h1 {
 }
 
 h2 {
-  color: #5C6BC0; /* Blu lavanda */
+  color: #5c6bc0; /* Blu lavanda */
   font-size: 30px;
   margin-bottom: 20px;
 }
-
-
 
 /*button {
   font-size: 18px;
@@ -60,7 +61,7 @@ button:hover {
   box-sizing: border-box; /* Include il padding nella dimensione totale dell'elemento */
   width: 100%; /* Occupa tutta la larghezza disponibile */
   max-width: 400px; /* Larghezza massima per il form */
-  border: 2px solid #5C6BC0; /* Bordo blu lavanda */
+  border: 2px solid #5c6bc0; /* Bordo blu lavanda */
   border-radius: 10px; /* Angoli arrotondati */
   background-color: #939491;
 }
@@ -78,7 +79,7 @@ button:hover {
   padding: 10px 20px; /* Padding orizzontale per migliorare l'aspetto */
   margin: 10px;
   color: white;
-  background-color: #7E57C2; /* Viola medio */
+  background-color: #7e57c2; /* Viola medio */
   border: none; /* Rimuove il bordo di default del pulsante */
   border-radius: 5px; /* Angoli arrotondati al pulsante */
 }
@@ -87,8 +88,6 @@ button:hover {
   background-color: #5E35B1;  Viola scuro al passaggio del mouse
 }
  */
-
-
 
 .Contents {
   margin: 5vh;
