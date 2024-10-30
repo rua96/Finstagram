@@ -4,7 +4,7 @@ import LikeInactive from "../../assets/cuoreBianco.svg";
 import { toast } from "react-toastify";
 import "../../styles/Like.css";
 import { AuthContext } from "../../services/AuthContext";
-import axios from "axios"; //nulla
+import axios from "axios";
 
 function LikeSection(props) {
   const { login } = useContext(AuthContext);
