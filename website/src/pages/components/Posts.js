@@ -23,7 +23,6 @@ function Posts(props) {
     if (props?.post?.title) {
       setLoading(false);
     }
-
     if (props?.username) {
       setUsername(props?.username);
     } else if (props?.post?.user?.username) {
