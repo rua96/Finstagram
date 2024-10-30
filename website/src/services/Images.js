@@ -3,7 +3,7 @@ import axios from "axios";
 class Images {
   static async getPostImage(key) {
     let response = await axios.post(
-      "http://localhost:5555/images/postImage",
+      process.env.REACT_APP_SERVER_URL + "/images/postImage",
       { key: key },
       {
         headers: {

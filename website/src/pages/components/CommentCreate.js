@@ -12,7 +12,7 @@ function CommentCreate(props) {
     console.log("createComment", comment, props?.postId);
 
     let response = await axios.post(
-      "http://localhost:5555/postsComments",
+      process.env.REACT_APP_SERVER_URL + "/postsComments",
       {
         comment: comment,
         postId: props?.postId,

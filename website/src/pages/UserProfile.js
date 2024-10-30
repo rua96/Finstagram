@@ -17,7 +17,7 @@ function UserProfile() {
   const fetchData = async () => {
     try {
       let response = await axios.get(
-        "http://localhost:5555/posts/" + username,
+        process.env.REACT_APP_SERVER_URL + "/posts/" + username,
 
         {
           headers: {

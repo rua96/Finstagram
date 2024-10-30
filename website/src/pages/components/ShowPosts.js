@@ -15,11 +15,14 @@ function ShowPosts() {
   }, []);
 
   const getShowPosts = async () => {
-    let response = await axios.get("http://localhost:5555/posts", {
-      headers: {
-        authToken: localStorage.getItem("AuthToken"),
-      },
-    });
+    let response = await axios.get(
+      process.env.REACT_APP_SERVER_URL + "/posts",
+      {
+        headers: {
+          authToken: localStorage.getItem("AuthToken"),
+        },
+      }
+    );
 
     console.log("Res", response.data);
 
