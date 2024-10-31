@@ -84,6 +84,7 @@ button {
   */
 
 .post {
+  right: 0;
   color: #4367e0;
   background-color: #d5add2;
   position: relative;
@@ -124,7 +125,6 @@ button {
   color: rgb(174, 65, 233);
 }
 .buttonDelete {
-  right: 0;
   position: absolute;
   padding: 3px 6px;
   margin: 3px 10px 3px auto;
