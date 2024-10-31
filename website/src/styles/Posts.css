@@ -1,157 +1,145 @@
-.formPosts{
+.formPosts {
   display: flex; /* Aggiungi display flex */
   flex-direction: column; /* Dispone gli elementi in colonna */
   align-items: center; /* Centra gli elementi orizzontalmente */
-  border: 2px solid #5C6BC0; /* Bordo blu lavanda */
+  border: 2px solid #5c6bc0; /* Bordo blu lavanda */
   padding: 20px; /* Padding aggiunto */
   border-radius: 10px; /* Angoli arrotondati */
   background-color: #d5add2;
 }
 
-
-
 body {
-    text-align: center;
-    background-color: #B2EBF2; /* Celestino chiaro */
-    margin: 0; /* Rimuove il margine di default del body */
-    display: flex; /* Rende il body flessibile */
-    justify-content: center; /* Centra il contenuto orizzontalmente */
-    align-items: center; /* Centra il contenuto verticalmente */
-    height: 100vh; /* Altezza del 100% della viewport */
-  }
-  
-  h1 {
-    color: #0c169c; /* blu scuro */
-    font-size: 50px;
-    margin-bottom: 10px;
-  }
-  
-  h2 {
-    color: #5C6BC0; /* Blu lavanda */
-    font-size: 30px;
-    margin-bottom: 20px;
-  }
-  
-  
-  button {
-    font-size: 18px;
-    padding: 10px 20px;
-    background-color: #7E57C2; /* Viola medio */
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
- /* 
+  text-align: center;
+  background-color: #b2ebf2; /* Celestino chiaro */
+  margin: 0; /* Rimuove il margine di default del body */
+  display: flex; /* Rende il body flessibile */
+  justify-content: center; /* Centra il contenuto orizzontalmente */
+  align-items: center; /* Centra il contenuto verticalmente */
+  height: 100vh; /* Altezza del 100% della viewport */
+}
+
+h1 {
+  color: #0c169c; /* blu scuro */
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #5c6bc0; /* Blu lavanda */
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+button {
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: #7e57c2; /* Viola medio */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+/* 
   button:hover {
     background-color: #5E35B1;  Viola scuro al passaggio del mouse
   } */
-  
-  .home-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px; /* Spazio tra gli elementi */
-    padding: 20px; /* Padding per il form */
-    box-sizing: border-box; /* Include il padding nella dimensione totale dell'elemento */
-    width: 100%; /* Occupa tutta la larghezza disponibile */
-    max-width: 400px; /* Larghezza massima per il form */
-    border: 2px solid #5C6BC0; /* Bordo blu lavanda */
-    border-radius: 10px; /* Angoli arrotondati */
-    background-color: #939491;
-  }
-  
-  .home-form input {
-    padding: 10px;
-    margin: 5px;
-    width: 100%; /* Occupa la larghezza completa del modulo */
-    border: 1px solid #ccc; /* Aggiunge un bordo agli input */
-    border-radius: 5px; /* Aggiunge angoli arrotondati agli input */
-    box-sizing: border-box; /* Include il padding nella dimensione totale dell'input */
-  }
-  
-  .home-form button {
-    padding: 10px 20px; /* Padding orizzontale per migliorare l'aspetto */
-    margin: 10px;
-    color: white;
-    background-color: #7E57C2; /* Viola medio */
-    border: none; /* Rimuove il bordo di default del pulsante */
-    border-radius: 5px; /* Angoli arrotondati al pulsante */
-  }
-  /*
+
+.home-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px; /* Spazio tra gli elementi */
+  padding: 20px; /* Padding per il form */
+  box-sizing: border-box; /* Include il padding nella dimensione totale dell'elemento */
+  width: 100%; /* Occupa tutta la larghezza disponibile */
+  max-width: 400px; /* Larghezza massima per il form */
+  border: 2px solid #5c6bc0; /* Bordo blu lavanda */
+  border-radius: 10px; /* Angoli arrotondati */
+  background-color: #939491;
+}
+
+.home-form input {
+  padding: 10px;
+  margin: 5px;
+  width: 100%; /* Occupa la larghezza completa del modulo */
+  border: 1px solid #ccc; /* Aggiunge un bordo agli input */
+  border-radius: 5px; /* Aggiunge angoli arrotondati agli input */
+  box-sizing: border-box; /* Include il padding nella dimensione totale dell'input */
+}
+
+.home-form button {
+  padding: 10px 20px; /* Padding orizzontale per migliorare l'aspetto */
+  margin: 10px;
+  color: white;
+  background-color: #7e57c2; /* Viola medio */
+  border: none; /* Rimuove il bordo di default del pulsante */
+  border-radius: 5px; /* Angoli arrotondati al pulsante */
+}
+/*
   .home-form button:hover {
     background-color: #5E35B1;  Viola scuro al passaggio del mouse 
   }
   */
-  
-  .post {
-    color:  #4367e0;
-    background-color:#d5add2;
-    
- 
-     
-    ;
-    
-    margin: 10px 0;
-    /* border-radius: 8px; */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .post h3 {
-    width: 100%;
-    max-width: 400px;
-    padding: 10px;
-    margin-bottom: -32px; /* Margine negativo per eliminare lo spazio */
-    box-sizing: border-box;
-    font-size: 30px;
-    color: #4367e0;
-    border: 2px solid rgb(118, 118, 118);
-  }
-  
-  .description {
-    width: 100%;
-    max-width: 400px;
-    padding: 10px;
-    margin-bottom: 0px;
-    box-sizing: border-box;
-    font-size: 30px;
-    color: #4367e0;
-    border: 2px solid rgb(118, 118, 118);
-  }
-  
-  
 
-  
-  .postUser{
-    font-size: 10px ;
-    background-color: rgb(36, 186, 228) ;
-    padding: 4px 8px;
-  }
-  .date {
-    font-size: 12px ;
-    color:rgb(174, 65, 233);
-  }
-  .buttonDelete {
-    padding: 3px 6px;
-    margin: 3px 10px 3px auto; 
-    color: white;
-    background-color: rgb(17, 0, 255);
-    border: none;
-    border-radius: 3px;
-    font-size: 12px;
-    display: block;
+.post {
+  color: #4367e0;
+  background-color: #d5add2;
+  position: relative;
+  margin: 10px 0;
+  /* border-radius: 8px; */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.immagineLike
-{
-width: 25px; 
-height:25px;
+
+.post h3 {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin-bottom: -32px; /* Margine negativo per eliminare lo spazio */
+  box-sizing: border-box;
+  font-size: 30px;
+  color: #4367e0;
+  border: 2px solid rgb(118, 118, 118);
+}
+
+.description {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin-bottom: 0px;
+  box-sizing: border-box;
+  font-size: 30px;
+  color: #4367e0;
+  border: 2px solid rgb(118, 118, 118);
+}
+
+.postUser {
+  font-size: 10px;
+  background-color: rgb(36, 186, 228);
+  padding: 4px 8px;
+}
+.date {
+  font-size: 12px;
+  color: rgb(174, 65, 233);
+}
+.buttonDelete {
+  position: absolute;
+  padding: 3px 6px;
+  margin: 3px 10px 3px auto;
+  color: white;
+  background-color: rgb(17, 0, 255);
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  display: block;
+}
+.immagineLike {
+  width: 25px;
+  height: 25px;
 }
 
 .ButtonPosts {
-
   background-color: rgb(42, 151, 205);
   padding: 3px 6px;
-
 }
