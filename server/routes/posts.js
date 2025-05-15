@@ -1,24 +1,43 @@
 const express = require("express");
 const router = express.Router();
-const { posts, users, postsLikes, postsComments } = require("../models");
-const { validateToken } = require("../middlewares/Authentication");
+const {
+  posts,
+  users,
+  postsLikes,
+  postsComments,
+  postImages,
+} = require("../models");
 const Authentication = require("../middlewares/Authentication");
 const { Op } = require("sequelize");
-const { postImages } = require("../models");
+const { upload } = require("../services/upload");
 
-router.post("/", Authentication.validateToken, async (req, res) => {
-  const { title, description } = req.body;
+// 📤 Creazione post + upload immagine
+router.post(
+  "/",
+  Authentication.validateToken,
+  upload.single("image"),
+  async (req, res) => {
+    const { title, description } = req.body;
 
-  let post = await posts.create({
-    title: title,
-    description: description,
-    userId: req.user.id,
-    status: "active",
-  });
+    const post = await posts.create({
+      title: title,
+      description: description,
+      userId: req.user.id,
+      status: "active",
+    });
 
-  return res.json(post);
-});
+    if (req.file && req.file.path) {
+      await postImages.create({
+        imageUrl: req.file.path,
+        postId: post.id,
+      });
+    }
 
+    return res.json(post);
+  }
+);
+
+// 📥 Recupera tutti i post
 router.get("/", Authentication.validateToken, async (req, res) => {
   let getPosts = await posts.findAll({
     where: {
@@ -27,85 +46,50 @@ router.get("/", Authentication.validateToken, async (req, res) => {
       },
     },
     include: [
-      {
-        model: users,
-        attributes: ["username"],
-      },
-      {
-        model: postsLikes,
-      },
+      { model: users, attributes: ["username"] },
+      { model: postsLikes },
       {
         model: postsComments,
-        include: [
-          {
-            model: users,
-            attributes: ["username"],
-          },
-        ],
+        include: [{ model: users, attributes: ["username"] }],
       },
-      {
-        model: postImages,
-      },
+      { model: postImages }, // 👈 le immagini sono incluse direttamente
     ],
   });
 
   return res.json(getPosts);
 });
 
-router.get("/:username", validateToken, async (req, res) => {
+// 👤 Post di un singolo utente
+router.get("/:username", Authentication.validateToken, async (req, res) => {
   const { username } = req.params;
 
-  let user = await users.findOne({
-    where: {
-      username: username,
-    },
-  });
-  if (!user) {
-    return res.json({ error: "User Does Not Exist!" });
-  }
+  const user = await users.findOne({ where: { username } });
+  if (!user) return res.json({ error: "User Does Not Exist!" });
 
-  let userPosts = await posts.findAll({
+  const userPosts = await posts.findAll({
     where: {
       userId: user.id,
       status: "active",
     },
     include: [
-      {
-        model: users,
-        attributes: ["username"],
-      },
-      {
-        model: postsLikes,
-      },
+      { model: users, attributes: ["username"] },
+      { model: postsLikes },
       {
         model: postsComments,
-        include: [
-          {
-            model: users,
-            attributes: ["username"],
-          },
-        ],
+        include: [{ model: users, attributes: ["username"] }],
       },
+      { model: postImages }, // 👈 include immagini
     ],
   });
+
   return res.json(userPosts);
 });
 
-router.delete("/:id", validateToken, async (req, res) => {
+// 🗑️ Elimina post (soft delete)
+router.delete("/:id", Authentication.validateToken, async (req, res) => {
   const { id } = req.params;
 
-  console.log("ri", id);
-
-  await posts.update(
-    {
-      status: "deleted",
-    },
-    {
-      where: {
-        id: id,
-      },
-    }
-  );
+  await posts.update({ status: "deleted" }, { where: { id } });
 
   return res.json({ message: "Deleted Post" });
 });

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"; // rfce + invio
+import React, { useContext, useEffect, useState } from "react";
 import "../../styles/Posts.css";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -8,7 +8,6 @@ import DateService from "../../services/Date";
 import LikeSection from "./Like";
 import CommentsSection from "./CommentsSection";
 import CommentIcon from "../../assets/comments.svg";
-import Images from "../../services/Images";
 
 function Posts(props) {
   const { login } = useContext(AuthContext);
@@ -16,8 +15,6 @@ function Posts(props) {
   const [toggle, setToggle] = useState(false);
   const [loading, setLoading] = useState(true);
   const [commentlength, setCommentLength] = useState(0);
-  const [image, setImage] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (props?.post?.title) {
@@ -31,17 +28,13 @@ function Posts(props) {
     if (props?.post?.postsComments?.length) {
       setCommentLength(props?.post?.postsComments?.length);
     }
-    if (props?.post?.postImage?.key) {
-      onGetImage(props?.post?.postImage?.key);
-    }
-    // console.log(props?.post?.postImage?.key);
   }, [props]);
 
-  const onGetImage = async (key) => {
-    let getImage = await Images.getPostImage(key);
-    const imageBlob = new Blob([getImage]);
-    setImage(imageBlob);
-  };
+  // Prendi la prima immagine associata al post (se presente)
+  const imageUrl =
+    props?.post?.postImages && props?.post?.postImages.length > 0
+      ? props.postImages[0].imageUrl
+      : null;
 
   const onDelete = async () => {
     try {
@@ -54,26 +47,15 @@ function Posts(props) {
         }
       );
 
-      // Log della risposta per debug
-      console.log("Delete response:", response);
-
-      // Controlla se la risposta è positiva
       if (response.status === 200) {
-        // Rimuovi il post dallo stato solo se l'eliminazione ha avuto successo
         props.deletePost(props?.post?.id);
         toast.success("You have deleted your post");
       } else {
-        // Gestisci eventuali errori restituiti dal server
         toast.error(
           "Error deleting the post: " + response.data.message || "Unknown error"
         );
       }
     } catch (error) {
-      // Stampa l'errore per la diagnostica
-      console.error(
-        "Delete error:",
-        error.response ? error.response.data : error
-      );
       toast.error(
         "Error deleting the post: " +
           (error.response?.data?.message || "Unknown error")
@@ -83,23 +65,15 @@ function Posts(props) {
 
   return (
     <div className="post" id={props?.post?.id}>
-      {login.username === username ? (
+      {login.username === username && (
         <button className="buttonDelete" onClick={onDelete}>
-          {" "}
-          X{" "}
+          X
         </button>
-      ) : (
-        <></>
       )}
       <div className="formPosts">
         <div className="formPostsdiv">
-          {image ? (
-            <img
-              width="100%"
-              height="100%"
-              src={URL.createObjectURL(image)}
-              alt="Post Image"
-            />
+          {imageUrl ? (
+            <img width="100%" height="100%" src={imageUrl} alt="Post Image" />
           ) : (
             <>Loading...</>
           )}
@@ -115,11 +89,9 @@ function Posts(props) {
           <button
             type="button"
             className="ButtonPosts"
-            onClick={() => {
-              setToggle(!toggle);
-            }}
+            onClick={() => setToggle(!toggle)}
           >
-            <img class name="immacomment" src={CommentIcon} alt="Comments" />
+            <img className="immacomment" src={CommentIcon} alt="Comments" />
             Comment {commentlength}
           </button>
         </div>
@@ -128,13 +100,9 @@ function Posts(props) {
           <CommentsSection
             postId={props?.post?.id}
             comments={props?.post?.postsComments}
-            addcomment={() => {
-              setCommentLength(commentlength + 1);
-            }}
+            addcomment={() => setCommentLength(commentlength + 1)}
           />
-        ) : (
-          <></>
-        )}
+        ) : null}
         <div>
           <button
             className="postUser"
