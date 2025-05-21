@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-require("dotenv").config(); // <-- carica .env PRIMA di tutto
+require("dotenv").config(); // Carica le variabili d'ambiente da .env
 
 const db = require("./models");
 
-// Configura Cloudinary (solo inizializzazione, upload è nei router)
+// Configura Cloudinary
 const cloudinary = require("cloudinary").v2;
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -13,8 +13,31 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+// CORS: Definisci le origini consentite
+const allowedOrigins = [
+  "https://tuo-frontend.vercel.app", // 🔁 Sostituisci con il dominio corretto del frontend
+  "https://tuo-backend.onrender.com", // Se necessario
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Non autorizzato"), false);
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+  allowedHeaders: ["Content-Type", "Authorization", "authtoken"],
+  credentials: true,
+};
+
+// Middleware
+app.use(cors(corsOptions));
 app.use(express.json());
-app.use(cors());
+
+// Se usi file statici (opzionale, per immagini locali)
+app.use("/public", express.static("public"));
 
 // ROUTES
 const usersRouter = require("./routes/users");
@@ -33,8 +56,9 @@ const imagesRouter = require("./routes/images");
 app.use("/images", imagesRouter);
 
 // AVVIO SERVER
+const PORT = process.env.PORT || 5555;
 db.sequelize.sync().then(() => {
-  app.listen(5555, () => {
-    console.log("🚀 Server avviato su PORTA 5555");
+  app.listen(PORT, () => {
+    console.log(`🚀 Server avviato su PORTA ${PORT}`);
   });
 });

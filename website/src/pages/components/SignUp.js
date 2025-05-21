@@ -2,10 +2,26 @@ import React from "react";
 import axios from "axios";
 import "../../styles/SignUp.css";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function SignUp(props) {
   async function onSignUp(e) {
     e.preventDefault();
+
+    const showPasswordInfo = () => {
+      toast.info(
+        "La password deve contenere almeno 8 caratteri, includere lettere maiuscole, numeri e simboli.",
+        {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          style: { background: "#333", color: "#fff" },
+        }
+      );
+    };
 
     console.log("E", e.target[0].value, e.target[1].value, e.target[2].value);
 
