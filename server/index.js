@@ -15,7 +15,7 @@ cloudinary.config({
 
 // CORS: Definisci le origini consentite
 const allowedOrigins = [
-  "https://tuo-frontend.vercel.app", // 🔁 Sostituisci con il dominio corretto del frontend
+  "https://instagram-kg3y.vercel.app/",
   "https://instagram-9y99.onrender.com",
 ];
 
