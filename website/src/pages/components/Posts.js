@@ -15,6 +15,7 @@ function Posts(props) {
   const [toggle, setToggle] = useState(false);
   const [loading, setLoading] = useState(true);
   const [commentlength, setCommentLength] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (props?.post?.title) {
