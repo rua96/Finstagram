@@ -28,7 +28,7 @@ function CreatePostForm() {
 
     if (response?.data) {
       const data = new FormData();
-      data.append("image", image);
+      data.append("file", image);
 
       let imageResponse = await axios.post(
         process.env.REACT_APP_SERVER_URL +
