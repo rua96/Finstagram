@@ -15,6 +15,9 @@ cloudinary.config({
 
 // CORS: Definisci le origini consentite
 const allowedOrigins = [
+  "https://instagram-w4xs.onrender.com/images/upload/2",
+  "https://finstagram-8h61.vercel.app",
+  "https://instagram-w4xs.onrender.com/images/upload/2";
   "https://instagram-clss.vercel.app/users",
   "https://instagram-one-wheat.vercel.app",
   "https://instagram-clss.vercel.app/users",
